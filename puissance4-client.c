@@ -24,8 +24,8 @@ char assignement(){
 
 //Fonction placement de touche
 int player_placement(int col_selected, int turn){
-  if(turn == 1) pion = 'X';
-  else pion = 'O';
+  if(turn == 1) pion = 'X'; // SEra supprimer quand les fonctions avec le serveur seront implémentés
+  else pion = 'O';          // delete
   for (int i = nbr_ligne - 1; i >= 0; i--) {
     if(grille[i][col_selected] == BLANK){
       grille[i][col_selected] = pion;
