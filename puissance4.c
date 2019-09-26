@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define clear() printf("\033[H\033[J")
 char BLANK  = ' ';
 char pion;
 char grille[6][7];
@@ -24,7 +25,7 @@ char assignement(){
 //Fonction placement de touche
 int player_placement(int col_selected, int turn){
   if(turn == 1) pion = 'X';
-  else pion = 'o';
+  else pion = 'O';
   for (int i = nbr_ligne - 1; i >= 0; i--) {
     if(grille[i][col_selected] == BLANK){
       grille[i][col_selected] = pion;
@@ -86,14 +87,30 @@ void affichage(){
 }
 
 int main(int argc, char* argv[]){
+  clear();
   init();
   int col, turn = 1, rep;
   pion = assignement();
   while(1){
+    affichage();
     printf("\n\nveuillez choisir une colonne : ");
     scanf("%d",&col);
     rep = player_placement(col, turn);
-    if(rep == -1)
+    if(rep == -1){
+      clear();
+      printf("vous ne pouvez jouer là\n");
+    }
+    else{
+      if(verif() == 1){
+        clear();
+        affichage();
+        printf("Gagnant\n");
+        return 0;
+      }
+      if(turn == 1) turn = 2;
+      else turn = 1;
+      clear();
+    }
   }
 
 }
