@@ -79,8 +79,8 @@ int main(void)
             /* Fermeture de la socket client et de la socket serveur */
             printf("Fermeture de la socket client\n");
             closesocket(csock);
-            printf("Fermeture de la socket serveur\n");
-            closesocket(sock);
+           // printf("Fermeture de la socket serveur\n");
+            //closesocket(sock);
             printf("Fermeture du serveur terminée\n");
         }
         else
